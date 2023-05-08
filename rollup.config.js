@@ -4,7 +4,6 @@ import { terser } from "rollup-plugin-terser"
 import json from '@rollup/plugin-json'
 import { babel } from '@rollup/plugin-babel'
 import autoExternal from 'rollup-plugin-auto-external'
-import typescript from '@rollup/plugin-typescript'
 import bundleSize from 'rollup-plugin-bundle-size'
 import path from 'path'
 
@@ -22,7 +21,6 @@ const buildConfig = ({ es5, browser = true, minifiedVersion = true, ...config })
 	const basename = path.basename(file, ext)
 	const extArr = ext.split('.')
 	extArr.shift()
-	console.log(config.output, 'config.output')
 
 	const build = ({ minified }) => ({
 		input: namedInput,
@@ -34,9 +32,6 @@ const buildConfig = ({ es5, browser = true, minifiedVersion = true, ...config })
 			json(),
 			resolve({ browser }),
 			commonjs(),
-			// typescript({
-			// 	sourceMap: false
-			// }),
 			minified && terser(),
 			minified && bundleSize(),
 			...(es5 ? [babel({
@@ -63,8 +58,7 @@ export default async () => {
 		input: defaultInput,
 		es5: true,
 		output: {
-			dir: "dist",
-			file: `${outputFileName}.js`,
+			file: `dist/${outputFileName}.js`,
 			name,
 			format: "umd",
 			exports: "default",

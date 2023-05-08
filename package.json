@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "fix": "eslint --fix lib/**/*.js",
-    "build": "rollup -c -d"
+    "build": "rimraf dist && rollup -c"
   },
   "keywords": [],
   "author": "Huan",
