@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "fix": "eslint --fix lib/**/*.js",
+    "fix": "eslint --fix lib/**/*.ts",
     "build": "rimraf dist && rollup -c"
   },
   "keywords": [],
