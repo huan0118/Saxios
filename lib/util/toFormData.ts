@@ -36,7 +36,7 @@ function removeBrackets(key:string) {
  *
  * @returns {string} The path to the current key.
  */
-function renderKey(path, key, dots) {
+function renderKey(path:string, key, dots) {
   if (!path) return key;
   return path.concat(key).map(function each(token, i) {
     // eslint-disable-next-line no-param-reassign
@@ -113,7 +113,7 @@ function toFormData(obj, formData, options) {
     throw new TypeError('visitor must be a function');
   }
 
-  function convertValue(value) {
+  function convertValue(value:unknown) {
     if (value === null) return '';
 
     if (utils.isDate(value)) {
