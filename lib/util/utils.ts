@@ -495,7 +495,7 @@ const toFlatObject = (
 const endsWith = (
   str: string,
   searchString: string,
-  position: number | undefined
+  position?: number | undefined
 ): boolean => {
   if (position === undefined || position > str.length) {
     position = str.length;
@@ -774,7 +774,21 @@ const isThenable = (thing: Promise<unknown>) =>
   isFunction(thing.then) &&
   isFunction(thing.catch);
 
+("use strict");
+
+/**
+ * @param {Function} callback
+ *
+ * @returns {Function}
+ */
+function spread(callback: Function) {
+  return function wrap(arr: Array<unknown>) {
+    return callback.apply(null, arr);
+  };
+}
+
 export default {
+  spread,
   isArray,
   isArrayBuffer,
   isBuffer,
