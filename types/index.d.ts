@@ -24,3 +24,8 @@ type reduceDescriptorsCallFunction = (
   name: PropertyKey,
   obj: normalPropertyObject
 ) => boolean;
+
+
+interface ErrorConstructor {
+  captureStackTrace(thisArg: any, func: any): void
+}

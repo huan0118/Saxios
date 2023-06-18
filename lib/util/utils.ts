@@ -423,8 +423,8 @@ const inherits = (
   constructor: Function,
   // eslint-disable-next-line @typescript-eslint/ban-types
   superConstructor: Function,
-  props: PropertyDescriptorMap,
-  descriptors: PropertyDescriptorMap
+  props: object,
+  descriptors: PropertyDescriptorMap = {}
 ) => {
   constructor.prototype = Object.create(
     superConstructor.prototype,
